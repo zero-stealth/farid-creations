@@ -9,21 +9,6 @@
         conditions, please do not use this website.
       </p>
 
-      <h2>Use of the Website</h2>
-      <p>
-        This website is for your general information and use only. It is subject to change without
-        notice. We reserve the right to modify or discontinue any part of this website without prior
-        notice.
-      </p>
-
-      <h2>Content and Materials</h2>
-      <p>
-        The content and materials on this website are provided for general information only. They
-        are subject to change without notice. We do not provide any warranties or guarantees
-        regarding the accuracy, timeliness, or suitability of the information for any particular
-        purpose.
-      </p>
-
       <h2>Intellectual Property</h2>
       <p>
         This website contains material which is owned by or licensed to us. This material includes,

@@ -1,31 +1,36 @@
 <template>
-   <NavigationComponent />
+  <NavigationComponent />
   <div class="policy-container">
-    <h1>Graphic</h1>
+    <h1>Graphic Design</h1>
     <div class="policy-section">
       <p>
-        The information provided on this website is for general informational purposes only. The
-        content is subject to change without notice, and we make every effort to ensure the accuracy
-        of the information.
+        Welcome to our Graphic Design section. Here, you can find information about our graphic
+        design services and expertise. The content provided below is for general informational
+        purposes only.
       </p>
 
       <p>
-        Any links to external websites provided on this website are for convenience and do not
-        constitute an endorsement of the linked sites. We are not responsible for the content,
-        availability, or security of external websites.
+        Welcome to our Graphic Design section. Here, you can find information about our graphic
+        design services and expertise. The content provided below is for general informational
+        purposes only.
       </p>
 
       <p>
-        The content on this website does not constitute professional advice, and you should not rely
-        on it as such. If you require specific advice or assistance, please consult a qualified
-        professional in the relevant field.
+        Our graphic design team at Farid creation specializes in creating visually stunning and
+        impactful designs tailored to meet the unique needs of our clients. From logo design and
+        branding to digital and print materials, we are dedicated to bringing your vision to life.
       </p>
 
       <p>
-        We reserve the right to modify, update, or discontinue this website or its content at any
-        time without prior notice. We are not obligated to update any information on this website.
+        Whether you're starting a new business or looking to refresh your brand, our experienced
+        graphic designers are here to collaborate with you and deliver creative solutions that set
+        you apart in the market.
       </p>
-      
+
+      <p>
+        If you have specific inquiries or need assistance related to graphic design, please feel
+        free to contact our team of professionals.
+      </p>
     </div>
   </div>
 </template>

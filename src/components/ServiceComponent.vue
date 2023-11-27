@@ -26,7 +26,7 @@
           {{ serviceItem.name }}
         </h2>
         <p>{{ serviceItem.description }}</p>
-        <button class="btn-services-n" @click=goTO(serviceItem.name)>
+        <button class="btn-services-n" @click=goTo(serviceItem.name)>
           View  more
         </button>
       </div>
@@ -84,25 +84,20 @@ function selectService(service) {
   selectedService.value = service
 }
 
-const goTO = (serviceName) => {
+const goTo = (serviceName) => {
   switch (serviceName) {
     case '01 Graphic Design':
-    router.push({ name: 'Graphic' })
-
+      router.push({ name: 'Graphic' });
       break;
     case '02 Printing':
-    router.push({ name: 'Printing' })
-
+      router.push({ name: 'Printing' });
       break;
     case '03 Branding':
-    router.push({ name: 'Branding' })
-
+      router.push({ name: 'Branding' });
       break;
-    case 'Social Media Management':
-    router.push({ name: 'Social' })
-      
+    case '04 Social Media Management':
+      router.push({ name: 'Social' });
       break;
-  
     default:
       break;
   }

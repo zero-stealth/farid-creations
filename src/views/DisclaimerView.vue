@@ -1,12 +1,17 @@
 <template>
-   <NavigationComponent />
+  <NavigationComponent />
   <div class="policy-container">
     <h1>Disclaimer</h1>
     <div class="policy-section">
       <p>
-        The information provided on this website is for general informational purposes only. The
-        content is subject to change without notice, and we make every effort to ensure the accuracy
-        of the information.
+        Welcome to our Disclaimer section. The information provided below is for general
+        informational purposes only. Please take a moment to review our disclaimer.
+      </p>
+
+      <p>
+        The content on this website is subject to change without notice, and we make every effort to
+        ensure the accuracy of the information. However, we do not guarantee the completeness,
+        accuracy, reliability, suitability, or availability of the information.
       </p>
 
       <p>
@@ -25,7 +30,6 @@
         We reserve the right to modify, update, or discontinue this website or its content at any
         time without prior notice. We are not obligated to update any information on this website.
       </p>
-      
     </div>
   </div>
 </template>

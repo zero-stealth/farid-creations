@@ -63,7 +63,7 @@
             id="ProductDescription"
           />
         </div>
-        <button type="submit" class="btn-f-f">Submit</button>
+        <button type="submit" class="btn-f-f">Post</button>
       </div>
     </form>
   </div>

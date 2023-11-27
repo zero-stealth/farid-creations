@@ -134,7 +134,7 @@ const router = createRouter({
     },
     {
       path: '/graphic',
-      name: 'graphic',
+      name: 'Graphic',
       component: () => import('../views/GraphicView.vue'),
       meta: {
         title: "Farid creations - graphic design",

@@ -1,20 +1,31 @@
 @media screen {
-  .navigation-section{
-    width: 100%;
-    padding: 20px;
+  .support-container {
+    gap: 10px;
+    height: 80%;
     display: flex;
+    padding: 10px;
     align-items: center;
-    justify-content: start;
+    flex-direction: column;
+    justify-content: center;
 
   }
 
-
-  .icon-back {
-    height: 24px;
-    cursor: pointer;
-    transform: rotate(180deg);
+  .support-container p {
+    font-size: 1rem;
+    text-align: center;
   }
 
+  .support-container ul {
+    display: flex;
+    list-style: none;
+    align-items: center;
+    flex-direction: column;
+  }
+  
+  .support-container ul li {
+    font-size: .9rem;
+
+  }
 
 
 }

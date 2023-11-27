@@ -69,11 +69,8 @@ const create = async () => {
 
       }
     } catch (error) {
-      if (error.response.status === 400) {
-        errMsg.value = 'User already exists!'
-      } else {
-        errMsg.value = 'Invalid email or password'
-      }
+      errMsg.value = error.message;
+        console.error(error);
     }
   } else {
     errMsg.value = 'Please enter all the required fields'
