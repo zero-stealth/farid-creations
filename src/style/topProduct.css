@@ -1,0 +1,107 @@
+@media screen {
+    .top-component {
+        gap: 10px;
+        display: flex;
+        padding: 10px;
+        cursor: pointer;
+        flex-direction: column;
+        border: 2px solid var(--light-color);
+    }
+
+    .main-product {
+        gap: 10px;
+        width: 100%;
+        display: flex;
+        padding: 10px;
+        align-items: center;
+        flex-direction: column;
+        justify-content: center;
+        border: 2px solid var(--light-color);
+    }
+
+    .main-product h1 {
+        font-size: .7rem;
+    }
+
+    .main-product-img {
+        width: 140px;
+        height: 150px;
+        object-fit: cover;
+        object-position: center;
+    }
+
+    .sub-product {
+        gap: 10px;
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    .sub-product h1 {
+        font-size: .7rem;
+        text-transform: capitalize;
+    }
+
+    .sub-product-img {
+        height: 100px;
+        width: 50px;
+        object-fit: cover;
+        object-position: center;
+    }
+
+    .sub-product-card {
+        gap: 10px;
+        width:120px;
+        display: flex;
+        padding: 20px;
+        height: 150px;
+        align-items: center;
+        flex-direction: column;
+        justify-content: center;
+        border: 2px solid var(--light-color);
+
+
+    }
+
+    .no-data {
+        height: 30%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .no-data h1 {
+        font-size: 1rem;
+    }
+  
+}
+
+/* using it as global style for larger devices  */
+@media only screen and (min-width: 48em) {
+    .top-component {
+        margin: 30px;
+        flex-direction: row;
+    }
+
+    .main-product {
+        width: fit-content;
+    }
+
+    .main-product-img {
+        width: 150px;
+        height: 200px;
+    }
+
+    .sub-product-img {
+        height: 50px;
+    }
+
+    .sub-product-card {
+        width:200px;
+
+    }
+
+ 
+}
+

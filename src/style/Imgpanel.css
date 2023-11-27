@@ -1,0 +1,18 @@
+@media screen {
+  .home-panel {
+    height: 150px;
+    display: flex;
+    border-radius: 12px;
+    align-items: flex-end;
+    background-size: cover;
+    justify-content: center;
+    background-repeat: no-repeat;
+    background-position: center center;
+  }
+}
+
+    @media only screen and (min-width: 48em) {
+      .home-panel {
+        height: 200px;
+      }
+}

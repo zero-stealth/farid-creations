@@ -1,0 +1,59 @@
+@media screen {
+  .drop-down {
+    gap: 10px;
+    display: flex;
+    cursor: pointer;
+    align-items: center;
+    justify-content: space-around;
+  }
+
+  .drop-down span {
+    font-size: 0.7rem;
+    text-transform: uppercase;
+  }
+
+  .drop-icon {
+    width: 24px;
+    height: 24px;
+    transform: rotate(90deg);
+    fill: var(--tertiary-color);
+  }
+
+  .drop-container {
+    gap: 10px;
+    width: 80px;
+    display: flex;
+    position: relative;
+    flex-direction: column;
+  }
+
+  .drop-down-panel {
+    top: 40px;
+    gap: 10px;
+    z-index: 100;
+    display: flex;
+    cursor: pointer;
+    font-size: 0.6rem;
+    border-radius: 4px;
+    position: absolute;
+    flex-direction: column;
+    background-color: var(--light-color);
+
+  }
+
+
+  .show {
+    display: flex;
+  }
+
+  .hide {
+    display: none;
+  }
+}
+
+/* using it as global style for larger devices  */
+@media only screen and (min-width: 48em) {
+  .drop-down span {
+    font-size: 0.8rem;
+  }
+}

@@ -1,0 +1,36 @@
+@media screen {
+    .shop-container {
+        gap: 20px;
+        padding: 10px;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .shop-product {
+        gap: 10px;
+        display: flex;
+        flex-wrap: wrap;
+        cursor: pointer;
+        justify-content: space-between;
+    }
+
+    .no-data {
+        height: 300px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border: 1px solid var(--light-color);
+      }
+
+    .no-data h1 {
+        font-size: 1rem;
+    }
+    
+}
+
+/* using it as global style for larger devices  */
+@media only screen and (min-width: 48em) {
+
+ 
+}
+
