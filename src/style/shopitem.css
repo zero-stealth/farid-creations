@@ -30,7 +30,7 @@
     flex: 50%;
     display: flex;
     border-radius: 12px;
-    background-size: cover;
+    background-size: contain;
     background-repeat: no-repeat;
     background-position: center center;
   }
@@ -51,8 +51,9 @@
 
 
   .cart-h h1 {
-    font-size: .9rem;
-    font-weight: 400;
+    font-size: 1rem;
+    font-weight: 800;
+    text-transform: capitalize;
 
   }
 

@@ -1,8 +1,9 @@
 <script setup>
-import { ref } from 'vue'
+import { ref, watchEffect } from 'vue'
 import { useRouter } from 'vue-router'
+import { useAuthStore } from '@/stores/auth'
 
-const customerId = ref(localStorage.getItem('customerId') || '')
+const authStore = useAuthStore()
 
 defineProps({
   subtotal: Number,
@@ -14,7 +15,7 @@ const router = useRouter()
 const btnTitle = ref('checkout')
 
 const pay = () => {
-  if (customerId.value.trim() !== '') {
+  if (!authStore.token) {
     router.push({ name: 'Login' })
   } else {
     router.push({ name: 'Payment' })

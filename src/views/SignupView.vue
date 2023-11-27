@@ -3,6 +3,7 @@
     <div class="form-l-wrapper">
       <h1>Create an account</h1>
       <form @submit.prevent="create" class="l-form">
+        <input type="username" class="input-l" placeholder="Username" v-model="username" />
         <input type="email" class="input-l" placeholder="Email Address" v-model="email" />
         <input
           type="password"
@@ -35,11 +36,14 @@ const router = useRouter();
 const password = ref('');
 const errMsg = ref('');
 const email = ref('');
+const username = ref('')
 const confirmPassword = ref('');
 
 const reset = () => {
   email.value = '';
   password.value = '';
+  confirmPassword.value = ''
+  username.value = ''
 };
 
 const create = async () => {
@@ -48,17 +52,19 @@ const create = async () => {
       const response = await axios.post(`${SERVER_HOST}/auth/register`, {
         email: email.value,
         password: password.value,
+        username: username.value,
+
       });
 
       const token = response.data.token;
       const customerId = response.data._id;
+
       localStorage.setItem('email', email.value)
-      localStorage.setItem('customerId', customerId.value)
+      localStorage.setItem('customerId', customerId);
       authStore.updateToken(JSON.stringify(token));
       router.push({ name: 'Home' });
     } catch (error) {
-        errMsg.value = error.message;
-        console.error(error);
+      errMsg.value = error.response.data.message;
     }
   } else {
     errMsg.value = 'Please enter all the required fields';

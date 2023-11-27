@@ -19,10 +19,6 @@
         <button class="alt-btn" @click="create">
           Create an account
         </button>
-        <!-- <div class="auth-google-contain" @click="loginInWithGoogle">
-          <googleIcon class="auth-google" />
-          <span> sign in with google</span>
-        </div> -->
       </div>
     </div>
   </div>
@@ -54,14 +50,17 @@ const reset = () => {
 const login = async () => {
   if (email.value !== '' && password.value !== '') {
     try {
-      const response = await axios.post(`${SERVER_HOST}/auth/login`, {
+      const response = await axios.post(`${SERVER_HOST}/auth/login-admin`, {
         email: email.value,
         password: password.value
       });
 
       const token = response.data.token
+      const customerId = response.data_id
       const isAdmin = response.data.isAdmin
+
       localStorage.setItem('email', email.value)
+      localStorage.setItem('customerId', customerId)
       authStore.updateToken(JSON.stringify(token))
       if (isAdmin) {
         authStore.updateAdmin(isAdmin)
@@ -72,7 +71,9 @@ const login = async () => {
 
       }
     } catch (error) {
-      errMsg.value = 'Login failed. Please check your email or password.';
+      errMsg.value = error.response.data.message;
+
+      
     }
   } else {
     errMsg.value = 'Please enter your email and password.';
@@ -112,5 +113,5 @@ const resetAuth = async () => {
 </script>
 
 <style>
-@import '../style/auth.css';
+@import '@/style/auth.css';
 </style>

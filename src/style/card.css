@@ -36,6 +36,7 @@
     background-color: var(--tertiary-color);
   }
 
+
   .card-info p {
     font-weight: 800;
     color: var(--secondary-color);
@@ -48,9 +49,17 @@
 
   }
 
+  .card-info h4 {
+    text-transform: capitalize;
+  }
+
   .card-img-container{ 
     width: 100%;
     height: 250px;
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-color: var(--light-color);
   }
 
   .card-btn-contain {

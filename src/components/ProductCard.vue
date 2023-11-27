@@ -1,11 +1,11 @@
 <script setup>
 import { computed } from 'vue'
 
-const props = defineProps([ 'type', 'Id', 'title', 'price', 'Image'])
+const props = defineProps(['type', 'Id', 'title', 'price', 'Image']);
 
-const random = Math.floor(Math.random() * 100)
+const random = Math.floor(Math.random() * 1000);
 
-const totalPrice = computed(() => props.price - random)
+const totalPrice = computed(() => parseFloat(props.price) + random);
 
 </script>
 <template>
@@ -17,8 +17,8 @@ const totalPrice = computed(() => props.price - random)
     <div class="card-info">
       <h4>{{ props.title }}</h4>
       <p>
-        <span>Ksh {{ props.price }} </span>
-        Ksh {{ totalPrice }}
+        <span>Ksh {{ totalPrice }}</span>
+        Ksh {{ props.price }}
       </p>
     </div>
   </div>

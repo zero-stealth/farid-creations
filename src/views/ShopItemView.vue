@@ -3,7 +3,6 @@ import axios from 'axios'
 import { onMounted, ref } from 'vue'
 import addIcon from '@/icons/addIcon.vue'
 import minusIcon from '@/icons/minusIcon.vue'
-import deleteIcon from '@/icons/DeleteIcon.vue'
 import { useRouter, useRoute } from 'vue-router'
 
 const quantity = ref(1)
@@ -20,59 +19,62 @@ const buyNow = (id) => {
 
 const getProduct = async () => {
   try {
-    const response = await axios.get(`${serverHost}/products/${route.params.itemID}`)
-    ProductData.value = response.data
-  } catch (err) {
-    console.error(err)
+    const response = await axios.get(`${serverHost}/products/${route.params.itemID}`);
+    ProductData.value = Array.isArray(response.data) ? response.data : [response.data];
+  } catch (error) {
+    console.error('Error fetching product:', error);
   }
-}
-
-const Add = () => {
-  quantity.value ++
-}
-
-const Minus = () => {
-  if( quantity.value > 1) {
-    quantity.value --;
-  } else {
-    quantity.value = 1;
-  }
-}
+};
 
 
 const addToCart = async () => {
-  if (customerId.value.trim() !== '') {
+  if (customerId.value !== null) {
     try {
-      const formData = new FormData()
-      formData.append('customerId', customerId.value)
-      formData.append('productId', `${route.params.itemID}`)
-      formData.append('quantity', quantity.value)
+      const payload = {
+        customerId: customerId.value,
+        productId: route.params.itemID,
+        quantity: quantity.value,
+      };
 
-      const response = await axios.post(`${serverHost}/cart/add`, formData, {
+      const response = await axios.post(`${serverHost}/cart/add`, payload, {
         headers: {
-          'Content-Type': 'multipart/form-data'
-        }
-      })
-      alert('Added to cart')
+          'Content-Type': 'application/json',
+        },
+      });
+
+      alert('Item added to cart');
     } catch (err) {
-      console.error(err)
+      alert(err.response.data.error);
     }
   } else {
-    alert('Login to add to cart')
+    alert('Login to add to cart');
+  }
+};
+
+
+const add = () => {
+  quantity.value++
+}
+
+const minus = () => {
+  if (quantity.value > 1) {
+    quantity.value--;
+  } else {
+    quantity.value = 1;
   }
 }
 
 onMounted(() => {
   getProduct()
 })
-</script>
 
+
+</script>
 <template>
-  <div class="cart-contain" v-if="ProductData.length > 0">
-    <div class="cart-wrapper" v-for="product in ProductData" :key="product._id">
+  <div  class="cart-contain" v-if="ProductData.length > 0">
+    <div v-for="product in ProductData" :key="product._id" class="cart-wrapper">
       <div class="cart-layout">
         <div class="cart-lay1" :style="{ backgroundImage: `url(${product.image})` }">
-          <!-- product image -->
         </div>
         <div class="cart-lay2">
           <div class="cart-h">
@@ -85,13 +87,13 @@ onMounted(() => {
             </div>
             <div class="cart-no">
               <div class="inc-contain">
-                <div class="cart-in" @click="Add()">
+                <div class="cart-in" @click="add()">
                   <addIcon class="icon-add" />
                 </div>
                 <div class="quantity">
                   {{ quantity }}
                 </div>
-                <div class="cart-in" @click="Minus()">
+                <div class="cart-in" @click="minus()">
                   <minusIcon class="icon-minus" />
                 </div>
               </div>
@@ -105,10 +107,11 @@ onMounted(() => {
       </div>
     </div>
   </div>
-  <div class="cart-contain no-data" v-else>
+  <div v-else class="cart-contain no-data">
     <h1>Items empty</h1>
   </div>
 </template>
+
 <style>
 @import '@/style/shopitem.css';
 </style>

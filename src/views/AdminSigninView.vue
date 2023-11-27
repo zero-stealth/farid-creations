@@ -3,6 +3,8 @@
     <div class="form-l-wrapper">
       <h1>Create an account</h1>
       <form @submit.prevent="create" class="l-form">
+        <input type="username" class="input-l" placeholder="Username" v-model="username" />
+        <input type="phoneNumber" class="input-l" placeholder="07XXXXXXXX" v-model="phoneNumber" />
         <input type="email" class="input-l" placeholder="Email Address" v-model="email" />
         <input
           type="password"
@@ -40,25 +42,34 @@ const router = useRouter()
 const password = ref('')
 const errMsg = ref('')
 const email = ref('')
+const username = ref('')
+const phoneNumber = ref('')
 const confirmPassword = ref('')
 
 const reset = () => {
   email.value = ''
   password.value = ''
+  confirmPassword.value = ''
+  username.value = ''
+  phoneNumber.value = ''
 }
 
 const create = async () => {
-  if (email.value !== '' && password.value !== '') {
+  if (email.value !== '' && username.value !== '' && password.value !== '') {
     try {
-      const response = await axios.post(`${SERVER_HOST}/auth/register`, {
+      const response = await axios.post(`${SERVER_HOST}/auth/register-admin`, {
         email: email.value,
         password: password.value,
-        isAdmin: true
+        username: username.value,
+        phoneNumber: phoneNumber.value,
       })
 
       const token = response.data.token
+      const customerId = response.data._id
       const isAdmin = response.data.isAdmin
-      localStorage.setItem('email', email.value)
+      
+      localStorage.setItem('customerId', customerId);
+      localStorage.setItem('username', username.value)
       authStore.updateToken(JSON.stringify(token))
       if (isAdmin) {
         authStore.updateAdmin(isAdmin)
@@ -69,8 +80,7 @@ const create = async () => {
 
       }
     } catch (error) {
-      errMsg.value = error.message;
-        console.error(error);
+      errMsg.value = error.response.data.message;
     }
   } else {
     errMsg.value = 'Please enter all the required fields'

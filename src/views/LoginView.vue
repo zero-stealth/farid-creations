@@ -50,7 +50,6 @@ const reset = () => {
 
 
 
-
 const login = async () => {
   if (email.value !== '' && password.value !== '') {
     try {
@@ -58,12 +57,15 @@ const login = async () => {
         email: email.value,
         password: password.value
       });
-
       const token = response.data.token;
+      const customerId = response.data._id;
+
+      localStorage.setItem('email', email.value);
+      localStorage.setItem('customerId', customerId);
       authStore.updateToken(JSON.stringify(token));
       router.push({ name: 'Home' });
     } catch (error) {
-      errMsg.value = 'Login failed. Please check your email or password.';
+      errMsg.value = error.response.data.message;
     }
   } else {
     errMsg.value = 'Please enter your email and password.';
@@ -87,13 +89,10 @@ const resetAuth = async () => {
         email: email.value,
       })
       errMsg.value =  response.data.message
-      const customerId = response.data._id;
-      localStorage.setItem('customerId', customerId.value)
       localStorage.setItem('email', email.value)
       router.push({ name: 'Reset' })
-      alert(errMsg.value)
     } catch (error) {
-      errMsg.value = 'Failed to send reset code. Please try again.'
+      errMsg.value = error.response.data.message;
     }
   } else {
     errMsg.value = 'Write your email something'

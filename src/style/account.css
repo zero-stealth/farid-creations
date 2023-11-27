@@ -69,10 +69,11 @@
   }
 
   .acc-m {
+    width: 100%;
     overflow: hidden;
     overflow-x: auto;
     overflow-y: scroll;
-    background-color: var( --primary-color);
+    background-color: var(--light-primary-color);
   }
 
   .hide-ds {
@@ -88,15 +89,20 @@
     background-color: var( --primary-color);
 
   }
+  
+  table {
+    width: 100%;
+  }
+
 
   .acc-m thead {
     font-size: .7rem;
     background-color: var(--primary-color);
-    color: var(--background-color);
   }
 
   .acc-m tbody {
-    font-size: .7rem;
+    font-size: .8rem;
+    font-weight: bold;
   }
 
   .acc-m th,
@@ -104,21 +110,23 @@
     padding: 20px;
   }
 
-  .acc-m td {
-    font-weight: 200;
-    border-bottom: none;
-    cursor: pointer;
-    text-transform: capitalize;
+  .acc-m th {
+    font-weight: 600;
+    text-transform: uppercase;
     color: var(--background-color);
-    border: 3px solid var(--primary-color);
-    background-color: var(--light-primary-color);
+  }
+  
+  .acc-m td {
+    cursor: pointer;
+    border-bottom: none;
+    text-transform: capitalize;
+    border: 2px solid var(--primary-color);
 
   }
 
   .acc-m th {
     font-weight: 600;
     text-transform: uppercase;
-    color: var(--light-color);
   }
 
   .account-tbl-img {
@@ -178,7 +186,7 @@
   .icon-delete {
     width:24px;
     height: 24px;
-    fill: var(--tertiary-color);
+    fill: var(--secondary-color);
   }
  
 }
@@ -193,7 +201,7 @@
   overflow: hidden;
   overflow-y: auto;
   flex-direction: column;
-  background-color: var(--light-primary-color);
+  background-color: var(--primary-color);
 }
 
 .mobile-exit {
@@ -212,7 +220,7 @@
 /* using it as global style for larger devices  */
 @media only screen and (min-width: 48em) {
   .acc-m {
-    max-height: 500px;
+    max-height: 640px;
   }
 
   .acc-m td {

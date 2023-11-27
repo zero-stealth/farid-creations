@@ -30,7 +30,7 @@
     flex: 50%;
     display: flex;
     border-radius: 12px;
-    background-size: cover;
+    background-size: contain;
     background-repeat: no-repeat;
     background-position: center center;
   }
@@ -75,12 +75,14 @@
   .icon-delete {
     height: 26px;
     width: 26px;
+    cursor: pointer;
   }
 
   .icon-add,
   .icon-minus {
     height: 12px;
     width: 12px;
+    cursor: pointer;
     fill: var(--background-color);
   }
 

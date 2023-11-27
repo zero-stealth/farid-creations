@@ -19,14 +19,13 @@
   }
 
   .portfolio-header h1 {
-    font-size: 1.5rem;
+    font-size: 1rem;
   }
 
   .portfolio-wrapper {
     display: flex;
     border-radius: 12px;
     flex-direction: column;
-    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
   }
 
   .portfolio-img {
@@ -84,6 +83,7 @@
     font-size: 1rem;
     font-weight: 600;
     text-align: center;
+    text-transform: capitalize;
     font-family: var(--header-font);
     color: var(--soft-black-tone);
   }
@@ -112,7 +112,8 @@
     padding: 100px 30px;
   }
   .portfolio-header h1 {
-    font-size: 2rem;
+    font-size: 1.4rem;
+    text-decoration: underline;
   }
 
   .portfolio-img,
@@ -278,7 +279,7 @@
   }
 
   .portfolio-info h1 {
-    font-size: 2rem;
+    font-size: 1.2rem;
     color: var(--soft-black-tone);
   }
 

@@ -30,7 +30,7 @@ const  result = computed (() => {
 })
 
 const getProduct = (id) => {
-  router.push({ name: 'Cart', params: { cartID: id } })
+  router.push({ name: 'Item', params: { itemID: id } })
 
 }
 

@@ -1,19 +1,20 @@
 <script setup>
 import axios from 'axios'
 import addIcon from '@/icons/addIcon.vue'
-import { ref, computed, onMounted } from 'vue'
 import minusIcon from '@/icons/minusIcon.vue'
 import deleteIcon from '@/icons/DeleteIcon.vue'
 import CheckOut from '@/components/CheckOut.vue'
+import { ref, computed, onMounted } from 'vue'
 
 const quantity = ref(1)
 const cartData = ref([])
 const serverHost = import.meta.env.VITE_SERVER_HOST
 const customerId = ref(localStorage.getItem('customerId') || '')
 
+
 const getCartData = async (id) => {
   try {
-    const response = await axios.get(`${serverHost}/cart/${id}`)
+    const response = await axios.get(`${serverHost}/cart/items/${id}`)
     cartData.value = response.data
   } catch (err) {
     console.error(err)
@@ -31,9 +32,9 @@ const updateCartData = async (id) => {
           'Content-Type': 'multipart/form-data'
         }
       })
-      await getCartData()
+      await getCartData(customerId.value)
     } catch (err) {
-      console.error(err)
+      alert(err.response.data.error);
     }
   } else {
     alert('Quantity must be greater than 0')
@@ -43,15 +44,23 @@ const updateCartData = async (id) => {
 const deleteCart = async (id) => {
   try {
     const response = await axios.delete(`${serverHost}/cart/delete/${id}`, {})
-    await getCartData()
+    await getCartData(customerId.value)
+    alert(response.data.message)
   } catch (err) {
-    console.error('Deletion failed:', err)
+    alert(err.response.data.message);
+    console.log(err)
   }
 }
 
-const subtotal = computed(() => {
-  return 100 * 1
-})
+
+const total = computed(() => {
+  return cartData.value.reduce((acc, product) => {
+    const productPrice = parseFloat(product.price) || 0;
+    const productQuantity = product.quantity || 1;
+
+    return acc + productPrice * productQuantity;
+  }, 0);
+});
 
 const delivery = computed(() => {
   return 30 * 1
@@ -80,7 +89,7 @@ onMounted(() => {
   <div class="cart-contain" v-if="cartData.length > 0">
     <div class="cart-wrapper">
       <div class="cart-layout" v-for="data in cartData" :key="data._id">
-        <div class="cart-lay1" :style="{ backgroundImage: `url(${data.image})` }">
+        <div class="cart-lay1" :style="{ backgroundImage: `url(${data.productImage})` }">
           <!-- product image -->
         </div>
         <div class="cart-lay2">
@@ -94,23 +103,23 @@ onMounted(() => {
             </div>
             <div class="cart-no">
               <div class="inc-contain">
-                <div class="cart-in" @click="Add(cartData._id)">
+                <div class="cart-in" @click="Add(data._id)">
                   <addIcon class="icon-add" />
                 </div>
                 <div class="quantity">
                   {{ quantity }}
                 </div>
-                <div class="cart-in" @click="Minus(cartData._id)">
+                <div class="cart-in" @click="Minus(data._id)">
                   <minusIcon class="icon-minus" />
                 </div>
               </div>
-              <deleteIcon class="icon-delete" @click="deleteCart(cartData._id)" />
+              <deleteIcon class="icon-delete" @click="deleteCart(data._id)" />
             </div>
           </div>
         </div>
       </div>
     </div>
-    <CheckOut :subtotal="subtotal" :delivery="delivery" />
+    <CheckOut :subtotal="total" :delivery="delivery" />
   </div>
   <div class="cart-contain no-data" v-else>
     <h1>cart empty</h1>

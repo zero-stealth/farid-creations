@@ -1,7 +1,8 @@
 <script setup>
 import axios from 'axios'
 import Logo from '@/assets/logo.jpeg'
-import { ref, onMounted } from 'vue'
+import { ref, onMounted, watchEffect } from 'vue'
+import { useAuthStore } from '@/stores/auth'
 import CartIcon from '@/icons/cartIcon.vue'
 import SearchIcon from '@/icons/searchIcon.vue'
 import ProfileIcon from '@/icons/profileIcon.vue'
@@ -10,28 +11,34 @@ import { useSearchStore } from '@/stores/search'
 import { RouterLink, useRouter } from 'vue-router'
 import CategoryDropDown from '@/components/CategoryDropDown.vue'
 
+const random = ref('')
 const cartData = ref([])
-const isAuth = ref(false)
 const searchTerm = ref('')
 const router = useRouter()
+const authStore = useAuthStore()
 const searchStore = useSearchStore()
 const email = ref(localStorage.getItem('email'))
 const serverHost = import.meta.env.VITE_SERVER_HOST
 const customerId = ref(localStorage.getItem('customerId') || '')
 
-
-
 const getCartData = async (id) => {
+  random.value = Math.floor(Math.random() * 1000);
   try {
-    const response = await axios.get(`${serverHost}/cart/${id}`)
+    const response = await axios.get(`${serverHost}/cart/items/${id}`)
     cartData.value = response.data
   } catch (err) {
     console.error(err)
   }
 }
 
+
+const logOut = () => {
+  localStorage.clear()
+  authStore.removeToken()
+}
+
 const getUserName = (email) => {
-  if (email && isAuth) {
+  if (email && authStore.token) {
     const username = email.split('@')[0];
     return username;
   } else {
@@ -91,10 +98,13 @@ onMounted(() => {
         </div>
         <div class="side-nav">
           <div class="nav-profile-info">
-            <div class="cart-circle" @click="goSignin()">
+            <div class="cart-circle" @click="goSignin()" v-if="!authStore.token">
               <ProfileIcon class="nav-p" />
             </div>
-            <h1 v-if="isAuth">{{ getUserName(email) }}</h1>
+            <div class="cart-circle" @click="logOut()" v-else>
+              <img src="https://source.unsplash.com/random/200x200?sig={{ random }}" alt="profile" class="profile-pic">
+            </div>
+            <h1 v-if="authStore.token">{{ getUserName(email) }}</h1>
           </div>
           <div class="cart-circle" @click="goCart()">
             <span>{{ cartData.length }}</span>

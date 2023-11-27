@@ -15,7 +15,7 @@
         <div class="form-group">
           <label for="projectImage">Project Image:</label>
           <input
-            @change="handleprojectImage"
+            @change="handleProjectImage"
             type="file"
             class="form-g-input"
             id="projectImage"
@@ -23,14 +23,14 @@
           />
         </div>
         <div class="form-group">
-          <label for="projectName">Project Description:</label>
+          <label for="projectDescription">Project Description:</label>
           <textarea
             v-model="projectDescription"
             type="text"
             class="form-g-input"
             placeholder="logo design done by Adobe"
             id="projectDescription"
-          />
+          ></textarea>
         </div>
         <button type="submit" class="btn-f-f">Post</button>
       </div>
@@ -47,7 +47,6 @@ const projectImage = ref(null)
 const projectDescription = ref('')
 const serverHost = import.meta.env.VITE_SERVER_HOST
 
-
 const reset = () => {
   projectName.value = ''
   projectImage.value = ''
@@ -61,18 +60,18 @@ function handleFileUpload(event, targetRef) {
   }
 }
 
-function handleprojectImage(event) {
+function handleProjectImage(event) {
   handleFileUpload(event, projectImage)
 }
 
-
 async function handleSubmit() {
+  const user = JSON.parse(localStorage.getItem('token'))
+
   if (
     projectName.value.trim() !== '' &&
     projectImage.value !== null &&
     projectDescription.value.trim() !== ''
   ) {
-    const user = JSON.parse(localStorage.getItem('token'))
     try {
       const formData = new FormData()
       formData.append('title', projectName.value)
@@ -85,12 +84,12 @@ async function handleSubmit() {
           Authorization: `Bearer ${user}`
         }
       })
-      alert('project posted')
+
+      alert('Project posted successfully!')
       reset()
     } catch (err) {
       console.error(err)
     }
-
   } else {
     alert('No empty fields allowed')
   }

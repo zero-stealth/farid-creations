@@ -114,6 +114,14 @@
     border: 2px solid var(--primary-color);
   }
 
+  .profile-pic {
+    width: inherit;
+    height: inherit;
+    object-fit: cover;
+    border-radius: inherit;
+    object-position: center;
+  }
+
   .cart-circle span {
     top: -20px;
     left: 20px;

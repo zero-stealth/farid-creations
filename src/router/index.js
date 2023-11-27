@@ -1,9 +1,7 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import HomeView from '../views/HomeView.vue'
 
-const router = createRouter({
-  history: createWebHistory(import.meta.env.BASE_URL),
-  routes: [
+ const routes = [
     {
       path: '/',
       name: 'Home',
@@ -223,6 +221,37 @@ const router = createRouter({
       }
     },
   ]
-})
 
-export default router
+
+  const router = createRouter({
+    history: createWebHistory(import.meta.env.BASE_URL),
+    routes,
+  });
+  
+  const isAdmin = () => {
+    const admin = localStorage.getItem('admin');
+    return admin === 'true'; 
+  };
+  
+  const dynamicTitleGuard = (to, from, next) => {
+    document.title = to.meta.title || 'Farid creations - Creative Agency';
+    next();
+  };
+  
+  const adminGuard = (to, from, next) => {
+    if (to.matched.some((record) => record.meta.isAdmin)) {
+      if (isAdmin()) {
+        next();
+      } else {
+        next('/');
+      }
+    } else {
+      next();
+    }
+  };
+  
+  router.beforeEach(dynamicTitleGuard);
+  router.beforeEach(adminGuard);
+  
+  export default router;
+  

@@ -1,5 +1,5 @@
 <template>
-  <div class="Account-container">
+  <div class="account-container">
     <div class="search-section">
       <div class="form-group">
         <input
@@ -105,5 +105,4 @@ onMounted(() => {
 
 <style scoped>
 @import '@/style/account.css';
-@import '@/style/Bet.css';
 </style>
