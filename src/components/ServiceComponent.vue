@@ -36,10 +36,10 @@
 <script setup>
 import { ref } from 'vue'
 
-import branding from '../assets/branding.png'
-import design from '../assets/design.jpg'
-import marketing from '../assets/marketing.jpg'
-import printing from '../assets/printing.jpg'
+import branding from '@/assets/branding.png'
+import marketing from '@/assets/marketing.jpg'
+import printing from '@/assets/printing.jpg'
+import design from '@/assets/design.jpg'
 import { useRouter } from 'vue-router'
 
 const router = useRouter()

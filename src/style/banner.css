@@ -4,8 +4,13 @@
     overflow: hidden;
     position: relative;
     align-items: center;
+    background-size: cover;
+    background-position: center;
+    color: var(--secondary-color);
+    background-repeat: no-repeat;
     justify-content: space-between;
-  }
+}
+
 
   .inn-container {
     gap: 10px;
@@ -14,9 +19,6 @@
     min-width: 100%;
     padding:20px 50px;
     flex-direction: column;
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
     justify-content: space-between;
   }
 
@@ -49,7 +51,8 @@
 
   .inn-container p span {
     font-size: 1rem;
-    color: var(--secondary-color);
+    font-weight: bolder;
+    color: var(--primary-color);
   }
 
   .btn-ad {
@@ -57,25 +60,30 @@
     height: 30px;
     display: flex;
     cursor: pointer;
-    position: absolute;
     align-items: center;
     border-radius: 360%;
     justify-content: center;
     transform: rotate(180deg);
     background-color: transparent;
-    border: 2px solid var(--primary-color);
+    border: 2px solid var(--secondary-color);
+  }
+
+  .start-btn {
+    left: 0;
+    position:absolute ;
   }
 
   .btn-ad:hover {
-    background-color: var(--primary-color);
+    background-color: var(--secondary-color);
   }
 
   .btn-ad .icon-btn:hover {
-    fill: var(--background-color);
+    fill: var(--secondary-color);
   }
 
   .last-btn {
     right: 0;
+    position:absolute ;
     transform: rotate(360deg);
 
   }
@@ -83,7 +91,7 @@
   .icon-btn {
     width: 30px;
     height: 40px;
-    fill: var(--primary-color);
+    fill: var(--secondary-color);
   } 
 
   .btn-advert{

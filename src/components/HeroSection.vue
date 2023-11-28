@@ -1,10 +1,10 @@
 <script setup>
 import { useRouter } from 'vue-router'
 import design from '@/assets/design.jpg'
-import social from '@/assets/social.jpg'
+import social from '@/assets/social.png'
 import { ref, onMounted, watch } from 'vue'
-import ArrowIcon from '@/icons/ArrowIcon.vue'
-import branding from '@/assets/branding.jpg'
+import ArrowIcon from '@/icons/arrowIcon.vue'
+import branding from '@/assets/branding.png'
 import printing from '@/assets/printing.jpg'
 import notebooks from '@/assets/notebooks.jpg'
 import ArrowthinIcon from '@/icons/arrowthinIcon.vue'
@@ -96,14 +96,13 @@ const goToCategory = (name) => {
 </script>
 
 <template>
-  <div class="advert-banner">
-    <button class="btn-ad" @click="prevSlide"><ArrowIcon class="icon-btn" /></button>
+  <div class="advert-banner" :style="{ backgroundImage: `url(${slides[currentSlide].slide})` }">
+    <button class="btn-ad start-btn" @click="prevSlide"><ArrowIcon class="icon-btn" /></button>
     <div
       v-for="(slide, index) in slides"
       :key="index"
       class="inn-container"
-      :style="{ backgroundImage: `url(${slides[currentSlide].slide})` }"
-    >
+       >
       <h5>
         Exclusive offers <span>{{ slides[currentSlide].offers }} off</span>
       </h5>
