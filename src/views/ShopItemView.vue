@@ -1,7 +1,7 @@
 <script setup>
 import axios from 'axios'
 import { onMounted, ref } from 'vue'
-import addIcon from '@/icons/addIcon.vue'
+import addIcon from '@/icons/AddIcon.vue'
 import minusIcon from '@/icons/minusIcon.vue'
 import { useRouter, useRoute } from 'vue-router'
 

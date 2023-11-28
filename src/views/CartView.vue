@@ -1,6 +1,6 @@
 <script setup>
 import axios from 'axios'
-import addIcon from '@/icons/addIcon.vue'
+import addIcon from '@/icons/AddIcon.vue'
 import minusIcon from '@/icons/minusIcon.vue'
 import deleteIcon from '@/icons/DeleteIcon.vue'
 import CheckOut from '@/components/CheckOut.vue'
