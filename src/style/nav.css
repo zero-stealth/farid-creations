@@ -17,7 +17,6 @@
 
   .top-nav p {
     text-align: center;
-
   }
 
   .middle-nav {
@@ -126,7 +125,7 @@
     top: -20px;
     left: 20px;
     display: flex;
-    font-size: .8rem;
+    font-size: 0.8rem;
     position: absolute;
     border-radius: 360%;
     align-items: center;
@@ -143,17 +142,15 @@
   }
 
   .bottom-nav {
-    padding:10px;
+    padding: 10px;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    
   }
 
   .category-bottom-nav {
     display: none;
   }
-
 
   .bottom-part {
     gap: 10px;
@@ -170,7 +167,7 @@
   }
 
   .drop-down-panel span {
-    padding: 10px 4px;
+    padding: 10px 8px;
   }
 
   .drop-down-panel span:hover {
@@ -180,7 +177,6 @@
 }
 
 @media only screen and (min-width: 48em) {
-
   .top-nav {
     font-size: 0.8rem;
     padding: 10px 15px;
@@ -191,7 +187,6 @@
     align-items: center;
     flex-direction: row;
     gap: 10px;
-
   }
 
   .middle-nav-categories {
@@ -204,13 +199,12 @@
     align-items: center;
   }
 
-
   .logo {
     height: 50px;
   }
 
   .bottom-nav {
-    padding:10px 15px;
+    padding: 10px 15px;
   }
 
   .category-bottom-nav {
@@ -224,5 +218,4 @@
   .nav-link {
     font-size: 0.8rem;
   }
-
 }

@@ -9,23 +9,23 @@
     color: var(--secondary-color);
     background-repeat: no-repeat;
     justify-content: space-between;
-}
-
+  }
 
   .inn-container {
     gap: 10px;
     height: 50vh;
     display: flex;
     min-width: 100%;
-    padding:20px 50px;
+    padding: 20px 50px;
     flex-direction: column;
     justify-content: space-between;
+    backdrop-filter: blur(2px);
   }
 
   .inn-container h5 {
     gap: 10px;
     display: flex;
-    font-size: .7rem;
+    font-size: 0.7rem;
     font-weight: 600;
     align-items: center;
   }
@@ -43,16 +43,15 @@
   }
 
   .inn-container p {
-    font-size: .7rem;
+    font-size: 0.7rem;
     font-weight: 400;
     text-transform: capitalize;
-
   }
 
   .inn-container p span {
     font-size: 1rem;
     font-weight: bolder;
-    color: var(--primary-color);
+    /* color: var(--primary-color); */
   }
 
   .btn-ad {
@@ -70,7 +69,8 @@
 
   .start-btn {
     left: 0;
-    position:absolute ;
+    position: absolute;
+    z-index: 30;
   }
 
   .btn-ad:hover {
@@ -83,29 +83,26 @@
 
   .last-btn {
     right: 0;
-    position:absolute ;
+    position: absolute;
     transform: rotate(360deg);
-
   }
 
   .icon-btn {
     width: 30px;
     height: 40px;
     fill: var(--secondary-color);
-  } 
+  }
 
-  .btn-advert{
-    
+  .btn-advert {
     display: flex;
     padding: 4px 10px;
-    font-size: .8rem;
+    font-size: 0.8rem;
     width: fit-content;
     align-items: center;
     border-radius: 30px;
     justify-self: center;
     color: var(--background-color);
     background-color: var(--primary-color);
-    
   }
 
   .arrow-thin-icon {
@@ -121,7 +118,6 @@
 }
 /* using it as global style for larger devices  */
 @media only screen and (min-width: 48em) {
-
   .inn-container {
     padding: 60px;
   }
@@ -136,8 +132,7 @@
   }
 
   .inn-container p {
-    font-size: .8rem;
-
+    font-size: 0.8rem;
   }
 
   .inn-container p span {
@@ -149,8 +144,7 @@
     height: 40px;
   }
 
-
-  .btn-advert{
+  .btn-advert {
     display: flex;
     padding: 0 10px;
   }
@@ -158,5 +152,4 @@
   .arrow-thin-icon {
     height: 30px;
   }
-
 }
