@@ -16,7 +16,7 @@
 
 <script setup>
 import FilterIcon from '@/icons/filterIcon.vue'
-import ArrowIcon from '@/icons/arrowIcon.vue'
+import ArrowIcon from '@/icons/ArrowIcon.vue'
 import { useDropDownStore } from '@/stores/dropdown'
 
 const DropDownStore = useDropDownStore()

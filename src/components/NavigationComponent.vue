@@ -4,7 +4,7 @@
   </div>
 </template>
 <script setup>
-import ArrowIcon from '../icons/ArrowIcon.vue'
+import ArrowIcon from '@/icons/ArrowIcon.vue'
 import { useRouter } from 'vue-router'
 
 const router = useRouter()
