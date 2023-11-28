@@ -98,7 +98,7 @@ const goToCategory = (name) => {
 <template>
   <div class="advert-banner" :style="{ backgroundImage: `url(${slides[currentSlide].slide})` }">
     <button class="btn-ad start-btn" @click="prevSlide"><ArrowIcon class="icon-btn" /></button>
-    <div class="inn-container">
+    <div v-for="(slide, index) in slides" :key="index" class="inn-container">
       <h5>Exclusive offers <span>{{ slides[currentSlide].offers }} off</span></h5>
       <h1>Exclusive offers <span>{{ slides[currentSlide].title }}</span></h1>
       <p>{{ slides[currentSlide].info }}</p>
