@@ -4,6 +4,8 @@ import { onMounted, ref } from 'vue'
 import addIcon from '@/icons/AddIcon.vue'
 import minusIcon from '@/icons/minusIcon.vue'
 import { useRouter, useRoute } from 'vue-router'
+import { useToast } from 'vue-toastification'
+const toast = useToast()
 
 const quantity = ref(1)
 const route = useRoute()
@@ -19,13 +21,12 @@ const buyNow = (id) => {
 
 const getProduct = async () => {
   try {
-    const response = await axios.get(`${serverHost}/products/${route.params.itemID}`);
-    ProductData.value = Array.isArray(response.data) ? response.data : [response.data];
+    const response = await axios.get(`${serverHost}/products/${route.params.itemID}`)
+    ProductData.value = Array.isArray(response.data) ? response.data : [response.data]
   } catch (error) {
-    console.error('Error fetching product:', error);
+    console.error('Error fetching product:', error)
   }
-};
-
+}
 
 const addToCart = async () => {
   if (customerId.value !== null) {
@@ -33,24 +34,24 @@ const addToCart = async () => {
       const payload = {
         customerId: customerId.value,
         productId: route.params.itemID,
-        quantity: quantity.value,
-      };
+        quantity: quantity.value
+      }
 
       const response = await axios.post(`${serverHost}/cart/add`, payload, {
         headers: {
-          'Content-Type': 'application/json',
-        },
-      });
-
-      alert('Item added to cart');
+          'Content-Type': 'application/json'
+        }
+      })
+      toast.success('Item added to cart')
     } catch (err) {
-      alert(err.response.data.error);
+      if (err.response.data.error === 'customerId is required') {
+        toast.error('Kindly login to proceed with purchase')
+      }
     }
   } else {
-    alert('Login to add to cart');
+    toast.info('Log in to add item to cart')
   }
-};
-
+}
 
 const add = () => {
   quantity.value++
@@ -58,24 +59,21 @@ const add = () => {
 
 const minus = () => {
   if (quantity.value > 1) {
-    quantity.value--;
+    quantity.value--
   } else {
-    quantity.value = 1;
+    quantity.value = 1
   }
 }
 
-onMounted(() => {
-  getProduct()
+onMounted(async () => {
+  await getProduct()
 })
-
-
 </script>
 <template>
-  <div  class="cart-contain" v-if="ProductData.length > 0">
+  <div class="cart-contain" v-if="ProductData.length > 0">
     <div v-for="product in ProductData" :key="product._id" class="cart-wrapper">
       <div class="cart-layout">
-        <div class="cart-lay1" :style="{ backgroundImage: `url(${product.image})` }">
-        </div>
+        <div class="cart-lay1" :style="{ backgroundImage: `url(${product.image})` }"></div>
         <div class="cart-lay2">
           <div class="cart-h">
             <h1>{{ product.name }}</h1>

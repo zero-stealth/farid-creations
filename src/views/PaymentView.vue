@@ -5,6 +5,8 @@ import mpesa from '@/assets/mpesa.png'
 import { useRouter } from 'vue-router'
 import { usePaidStore } from '@/stores/paid'
 import { onMounted, computed, ref } from 'vue'
+import { useToast } from 'vue-toastification'
+const toast = useToast()
 
 const router = useRouter()
 const phoneNumber = ref('')
@@ -66,7 +68,9 @@ const pay = async () => {
   localStorage.setItem('paidProducts', JSON.stringify(productData.value))
   localStorage.setItem('totalPaidAmount', total.value)
 
-  alert('Payment successful')
+  // alert('Payment successful')
+  toast.success('Your payment was successful.')
+
   router.push({ name: 'Receipt' })
   //     } else {
   //       alert('Payment failed. Please try again.');
