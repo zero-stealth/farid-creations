@@ -1,22 +1,193 @@
 @media screen {
+  .pdf-wrapper {
+    gap: 10px;
+    display: flex;
+    padding: 10px 0;
+    flex-direction: column;
+  }
+ 
+  .pdf-container {
+    gap: 20px;
+    display: flex;
+    flex-direction: column;
+    background-color: var(--light-color);
+  }
+ 
+  .pdf-header {
+    gap: 10px;
+    display: flex;
+    padding: 10px;
+    flex-direction: column;
+    color: var(--background-color);
+    background-color: var(--secondary-color);
+  }
 
-.pdf-wrapper {
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    z-index: 991;
-    position: fixed;
-    overflow: auto;
-    background-color: #ffff;
-}
+  .top-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .top-header span {
+    font-size: .7rem;
+    font-weight: 400;
+  }
+
+  .pdf-logo {
+    height: 200px;
+    padding: 10px;
+    border-radius: 12px;
+    object-fit: contain;
+    background-color: var(--light-color);
+  }
+
+  .inner-header {
+    gap: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  .pdf-header-info h1 {
+    font-weight: 600;
+    text-align: center;
+    font-size: .8rem;
+  }
+
+  .pdf-details {
+    gap: 10px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+
+  }
+
+  .pdf-details h1 {
+    font-size: 1rem;
+    font-weight: 900;
+    text-align: center;
+    text-transform: uppercase;
+  }
+
+  .inner-pdf-details {
+    width: 100%;
+    border: 2px solid var(--secondary-color);
+  }
+
+  .inner-pdf-details table {
+    width: 100%;
+    background-color: var(--light-color);
+  }
+
+  .inner-pdf-details th {
+    padding: 10px;
+    font-size: .7rem;
+    color: var(--background-color);
+    background-color: var(--secondary-color);
+  }
+
+  .inner-pdf-details td {
+    border: 2px solid var(--secondary-color);
+    background-color: var(--light-color);
+    text-transform: capitalize;
+    text-align: center;
+    font-size: .7rem;
+    padding: 10px 0;
+  }
+
+  .inner-pdf-details tr:nth-child(even) {
+    color: var(--background-color);
+    background-color: var(--tertiary-color);
+  }
+
+  .total {
+    gap: 10px;
+    display: flex;
+    padding: 10px 0;
+    align-items: center;
+    color: var(--background-color);
+    justify-content: space-between;
+    background-color: var(--secondary-color);
+  }
+
+  .total h1 {
+    font-size: .8rem;
+    font-weight: bold;
+  }
+
+  .total span {
+    font-size: .8rem;
+    font-weight: bold;
+
+  }
+  
+  .pdf-pi {
+    height: 50px;
+    width: 50px;
+    object-fit: contain;
+    object-position: center;
+  }
+
+
+  .pdf-footer {
+    gap: 10px;
+    padding: 10px;
+    display: flex;
+    font-size: .8rem;
+    color: var(--background-color);
+    justify-content: space-between;
+    background-color: var(--secondary-color);
+  }
 
 
 
+  .btn1 {
+    width: 100%;
+    padding: 10px;
+    cursor: pointer;
+    color: var(--background-color);
+    background-color: var(--primary-color);
+  }
+
+  .btn1:hover {
+    background-color: var(--secondary-color);
+  }
 }
 
 /* using it as global style for larger devices  */
 @media only screen and (min-width: 48em) {
+  .pdf-wrapper {
+    padding: 20px;
+  }
+
+  .pdf-header {
+    padding: 20px;
+  }
+
+  .top-header span {
+    font-size: 1rem;
+  }
+
+  .pdf-header-info h1 {
+    font-size: 1rem;
+  }
+
+  .inner-pdf-details th {
+    font-size: .8rem;
+  }
+
+  .inner-pdf-details td {
+    font-size: .8rem;
+  }
+
+  .total h1 {
+    font-size: 1rem;
+  }
+
+  .total span {
+    font-size: 1rem;
+
+  }
 
 
 }

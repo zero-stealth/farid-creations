@@ -127,8 +127,9 @@ import HomeView from '../views/HomeView.vue'
       name: 'Receipt',
       component: () => import('../views/ReceiptView.vue'),
       meta: {
-        title: "Farid creations - receipt",
+      title: "Farid creations - receipt",
       }
+      
     },
     {
       path: '/graphic',
@@ -232,7 +233,8 @@ import HomeView from '../views/HomeView.vue'
     const admin = localStorage.getItem('admin');
     return admin === 'true'; 
   };
-  
+
+
   const dynamicTitleGuard = (to, from, next) => {
     document.title = to.meta.title || 'Farid creations - Creative Agency';
     next();

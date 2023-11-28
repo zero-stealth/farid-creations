@@ -50,8 +50,9 @@
 
   }
 
-  .payment-d ul {
-    list-style: square;
+  .payment-d ul li {
+    text-transform: capitalize;
+    list-style: circle;
   }
 
   .mpesa-logo {

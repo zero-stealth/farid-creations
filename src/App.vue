@@ -10,7 +10,7 @@
 </template>
 
 <script setup>
-import SplashView from '@/views/splashview.vue';
+import SplashView from '@/views/SplashView.vue';
 import Contact from '@/views/ContactView.vue';
 import NavBar from '@/components/NavBar.vue';
 import { RouterView } from 'vue-router'
