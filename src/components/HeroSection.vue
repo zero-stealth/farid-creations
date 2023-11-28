@@ -7,7 +7,7 @@ import ArrowIcon from '@/icons/ArrowIcon.vue'
 import branding from '@/assets/branding.png'
 import printing from '@/assets/printing.jpg'
 import notebooks from '@/assets/notebooks.jpg'
-import ArrowthinIcon from '@/icons/arrowthinIcon.vue'
+import ArrowThinIcon  from '@/icons/arrowthinIcon.vue'
 
 
 const router = useRouter()
@@ -98,20 +98,12 @@ const goToCategory = (name) => {
 <template>
   <div class="advert-banner" :style="{ backgroundImage: `url(${slides[currentSlide].slide})` }">
     <button class="btn-ad start-btn" @click="prevSlide"><ArrowIcon class="icon-btn" /></button>
-    <div
-      v-for="(slide, index) in slides"
-      :key="index"
-      class="inn-container"
-       >
-      <h5>
-        Exclusive offers <span>{{ slides[currentSlide].offers }} off</span>
-      </h5>
-      <h1>
-        Exclusive offers <span>{{ slides[currentSlide].title }}</span>
-      </h1>
+    <div class="inn-container">
+      <h5>Exclusive offers <span>{{ slides[currentSlide].offers }} off</span></h5>
+      <h1>Exclusive offers <span>{{ slides[currentSlide].title }}</span></h1>
       <p>{{ slides[currentSlide].info }}</p>
-      <p>from <span> Ksh {{ slides[currentSlide].price }}</span></p> 
-      <button class="btn-advert" @click="goToCategory(slides[currentSlide].link)">Shop Now <ArrowthinIcon class="arrow-thin-icon"/> </button>
+      <p>from <span>Ksh {{ slides[currentSlide].price }}</span></p> 
+      <button class="btn-advert" @click="goToCategory(slides[currentSlide].link)">Shop Now <ArrowThinIcon class="arrow-thin-icon"/></button>
     </div>
     <button class="btn-ad last-btn" @click="nextSlide"><ArrowIcon class="icon-btn" /></button>
   </div>

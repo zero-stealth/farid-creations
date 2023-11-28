@@ -78,7 +78,7 @@
   }
 
   .btn-ad .icon-btn:hover {
-    fill: var(--secondary-color);
+    fill: var(--background-color);
   }
 
   .last-btn {
