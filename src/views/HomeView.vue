@@ -6,7 +6,7 @@ import Portfolio from '@/views/PortfolioView.vue';
 import AboutView from '@/views/AboutView.vue';
 </script>
 <template>
-  <!-- <HeroSection /> -->
+  <HeroSection />
   <TopProductComponent />
   <AboutView/>
   <ProductComponent />

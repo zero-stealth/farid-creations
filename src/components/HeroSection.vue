@@ -109,5 +109,5 @@ const goToCategory = (name) => {
   </div>
 </template>
 <style scoped>
-@import '../style/banner.css';
+@import '@/style/banner.css';
 </style>
