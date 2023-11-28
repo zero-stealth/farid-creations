@@ -16,9 +16,7 @@
       </form>
       <span>or</span>
       <div class="l-alternatives">
-        <button class="alt-btn" @click="create">
-          Create an account
-        </button>
+        <button class="alt-btn" @click="create">Create an account</button>
       </div>
     </div>
   </div>
@@ -28,7 +26,6 @@ import { ref } from 'vue'
 import axios from 'axios'
 import { useRouter } from 'vue-router'
 import { useAuthStore } from '../stores/auth'
-
 
 const SERVER_HOST = import.meta.env.VITE_SERVER_HOST
 const authStore = useAuthStore()
@@ -44,16 +41,13 @@ const reset = () => {
   email.value = ''
 }
 
-
-
-
 const login = async () => {
   if (email.value !== '' && password.value !== '') {
     try {
       const response = await axios.post(`${SERVER_HOST}/auth/login-admin`, {
         email: email.value,
         password: password.value
-      });
+      })
 
       const token = response.data.token
       const customerId = response.data_id
@@ -68,18 +62,15 @@ const login = async () => {
         router.push({ name: 'Panel' })
       } else {
         router.push({ name: 'Home' })
-
       }
     } catch (error) {
-      errMsg.value = error.response.data.message;
-
-      
+      errMsg.value = error.response.data.message
     }
   } else {
-    errMsg.value = 'Please enter your email and password.';
-    reset();
+    errMsg.value = 'Please enter your email and password.'
+    reset()
   }
-};
+}
 
 const forgot = () => {
   title.value = 'write your email address'
@@ -94,9 +85,9 @@ const resetAuth = async () => {
   if (email.value !== '') {
     try {
       const response = await axios.post(`${SERVER_HOST}/auth/reset`, {
-        email: email.value,
+        email: email.value
       })
-      errMsg.value =  response.data.message
+      errMsg.value = response.data.message
       router.push({ name: 'Reset' })
       alert(errMsg.value)
     } catch (error) {
@@ -107,9 +98,6 @@ const resetAuth = async () => {
     reset()
   }
 }
-
-
-
 </script>
 
 <style>

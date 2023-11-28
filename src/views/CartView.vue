@@ -5,12 +5,13 @@ import minusIcon from '@/icons/minusIcon.vue'
 import deleteIcon from '@/icons/DeleteIcon.vue'
 import CheckOut from '@/components/CheckOut.vue'
 import { ref, computed, onMounted } from 'vue'
+import { useToast } from 'vue-toastification'
+const toast = useToast()
 
 const quantity = ref(1)
 const cartData = ref([])
 const serverHost = import.meta.env.VITE_SERVER_HOST
 const customerId = ref(localStorage.getItem('customerId') || '')
-
 
 const getCartData = async (id) => {
   try {
@@ -34,10 +35,11 @@ const updateCartData = async (id) => {
       })
       await getCartData(customerId.value)
     } catch (err) {
-      alert(err.response.data.error);
+      // alert(err.response.data.error);
+      toast.error(err.response.data.error)
     }
   } else {
-    alert('Quantity must be greater than 0')
+    toast.error('Quantity must be greater than 0')
   }
 }
 
@@ -45,22 +47,23 @@ const deleteCart = async (id) => {
   try {
     const response = await axios.delete(`${serverHost}/cart/delete/${id}`, {})
     await getCartData(customerId.value)
-    alert(response.data.message)
+    // alert(response.data.message)
+    toast.info(response.data.message)
   } catch (err) {
-    alert(err.response.data.message);
+    // alert(err.response.data.message);
+    toast.error('An error occured')
     console.log(err)
   }
 }
 
-
 const total = computed(() => {
   return cartData.value.reduce((acc, product) => {
-    const productPrice = parseFloat(product.price) || 0;
-    const productQuantity = product.quantity || 1;
+    const productPrice = parseFloat(product.price) || 0
+    const productQuantity = product.quantity || 1
 
-    return acc + productPrice * productQuantity;
-  }, 0);
-});
+    return acc + productPrice * productQuantity
+  }, 0)
+})
 
 const delivery = computed(() => {
   return 30 * 1
