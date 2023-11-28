@@ -14,12 +14,12 @@
 
   .inn-container {
     gap: 10px;
-    padding:20px;
     height: 50vh;
     display: flex;
     min-width: 100%;
+    padding:20px 50px;
     flex-direction: column;
-    justify-content: center;
+    justify-content: space-between;
   }
 
   .inn-container h5 {
@@ -122,7 +122,9 @@
 /* using it as global style for larger devices  */
 @media only screen and (min-width: 48em) {
 
-
+  .inn-container {
+    padding: 60px;
+  }
 
   .inn-container h5 {
     font-size: 1rem;
